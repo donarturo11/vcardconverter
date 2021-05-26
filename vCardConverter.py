@@ -294,6 +294,9 @@ def getGoogleContacts():
         ## empty cache from large variables
         del gGoogleContactsFile
         del gContactsOrig
+        return True
+    else:
+        return False
 
 
 
@@ -457,19 +460,14 @@ Usage:
                        containing 'key'                       
 """
 
+### options
 
-
-
-
-if __name__ == '__main__':
-    import sys
-    getGoogleContacts()
+def mainAppOpts():
     argsPossible=[
     '--vcard-to-abook',
     '--find-by-key',
     '--find-person'
     ]
-    arguments=sys.argv
     if '--vcard-to-abook' in arguments:
         argInd=arguments.index('--vcard-to-abook')
         argNext=argInd+1
@@ -502,6 +500,34 @@ if __name__ == '__main__':
     
     elif len(arguments)>1 and (arguments[1] not in argsPossible):
         print("Invalid args")
-    elif len(arguments)==1:
+    
+        
+    
+
+
+if __name__ == '__main__':
+    import sys
+    
+    
+    arguments=sys.argv
+    
+    run=getGoogleContacts()
+    if run and len(arguments)>1:
+        mainAppOpts()
+        
+    elif run and len(arguments)==1:
         print(greetingStr)
+        
+    elif not run and len(arguments)>=1:
+        msg=greetingStr
+        msg+="\n\n"
+        msg+="WARNING !!!\n"
+        msg+="File contacts not found. \n"
+        msg+="Please download it from your google account \n"
+        print(msg)
+        
+        
+    
+    
+    
 

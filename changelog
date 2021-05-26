@@ -2,3 +2,6 @@
 - Totally rewritten code to better performance
 - Add search mechanisms
 - Add some error excepts
+
+26.05.2021 08:54
+- Implement error exceptions, in case missing file.

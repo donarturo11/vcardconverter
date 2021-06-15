@@ -73,14 +73,13 @@ def splitAddressString(personNr):
     }
 
     addressDictKeys=list( addressDict.keys() )
-    addressListRange=range(len(addressList)-1)
-
+    addressListRange=range(0, len(addressList)-2)
+    
     if 'address' in dictBookItemKeys:
         for index in addressListRange:
             addrKey=addressDictKeys[index]
-            #if len(addressList) >= addressListIndex[index]:
             addressDict[addrKey]=addressList[index]
-
+    
     return addressDict
     
 ## TransformEnd
@@ -349,6 +348,7 @@ def makeABookEntry(personNr):
                     aBookDictPerson[addrKey]=addressDict[addrKey]
             except KeyError:
                 print("Email doesn't exist")        
+                aBookDictPerson[addrKey]=""
     return aBookDictPerson        
     
 def makeABookEntryStr(personNr):

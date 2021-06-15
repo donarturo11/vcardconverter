@@ -271,7 +271,7 @@ def getContactItem(personNr):
         for attribute in attributes:
             contactItemKey=contactFilter[vcfKey]
             if vcfKey in attribute:
-                contactItem[contactItemKey]=attribute.strip(vcfKey)
+                contactItem[contactItemKey]=attribute.replace(vcfKey, '')
     return contactItem
     
 def createContactsBook():    
